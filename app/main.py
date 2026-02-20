@@ -1,5 +1,6 @@
-from fastapi import Depends, FastAPI
+from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy import text
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
 from app.api.router import api_router
@@ -12,5 +13,8 @@ app.include_router(api_router)
 
 @app.get('/health', tags=['health'])
 def health(db: Session = Depends(get_db)) -> dict[str, str]:
-    db.execute(text('SELECT 1'))
+    try:
+        db.execute(text('SELECT 1'))
+    except SQLAlchemyError as exc:
+        raise HTTPException(status_code=503, detail='database_unavailable') from exc
     return {'status': 'ok'}
