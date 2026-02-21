@@ -36,9 +36,12 @@ Bu projenin amacı, mevcut Excel tabanlı CRM operasyonunu çok kullanıcılı, 
 - [ ] Backend API iskeleti ve veri tabanı şemasının oluşturulması
 - [ ] Frontend uygulama iskeleti ve temel ekranların hazırlanması
 - [ ] Test, denetim ve dağıtım süreçlerinin tanımlanması
+codex/set-up-directory-structure-and-documentation-vknc5g
 
 ## Çalıştırma
 
 ```bash
 docker compose up --build
 ```
+
+main
